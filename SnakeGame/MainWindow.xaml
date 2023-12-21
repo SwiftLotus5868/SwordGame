@@ -1,0 +1,67 @@
+﻿<Window x:Class="SnakeGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SnakeGame"
+        mc:Ignorable="d"
+        Title="Apollyon's Blade" Height="500" Width="800"
+        MinWidth="300" MinHeight="300"
+        Background="{StaticResource BackgroundColor}"
+        Foreground="{StaticResource TextColor}"
+        FontFamily="{StaticResource MainFont}"
+        WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        KeyDown="Window_KeyDown">
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="383*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/snake.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="ScoreText"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Text="SCORE 0"
+                   FontSize="22"
+                   Margin="318,0,0,0" FontWeight="Bold" Foreground="#FFFFD400" Background="Black" Grid.Column="1" />
+
+        <Border x:Name="GridBorder"
+                BorderThickness="1.5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                RenderOptions.EdgeMode="Aliased" Grid.Row="1" Margin="164,3,0,0" BorderBrush="#FFFFC200" Background="Black" Grid.Column="1">
+            <UniformGrid x:Name="GameGrid"
+                         Width="400"
+                         Height="400"
+                         SnapsToDevicePixels="True"
+                         RenderOptions.BitmapScalingMode="HighQuality" Background="Black"/>
+        </Border>
+
+        <Border x:Name="Overlay"
+                    Width="{Binding ActualWidth, ElementName=GridBorder}"
+                    Height="{Binding ActualHeight, ElementName=GridBorder}"
+                    Margin="164,3,198,52"
+                    RenderOptions.EdgeMode="Aliased" Grid.Column="1" Grid.Row="1">
+            <Border.Background>
+                <ImageBrush ImageSource="/Assets/icon.ico"/>
+            </Border.Background>
+            <TextBlock x:Name="OverlayText"
+                           Text="Press any key to start"
+                           FontSize="27"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap" Foreground="#FFFFDD00" FontWeight="Bold" Background="Black"
+                           />
+        </Border>
+    </Grid>
+</Window>
